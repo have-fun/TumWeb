@@ -1,6 +1,6 @@
 # TumWeb
 
-[![Release](https://img.shields.io/github/release/have-fun/tumweb.svg?label=maven version)](https://jitpack.io/#com.tompium.havefun/tumweb)
+[![Release](https://img.shields.io/github/release/have-fun/tumweb.svg?label=gradle version)](https://jitpack.io/#com.tompium/tumweb)
 
 ```gradle
    repositories {
@@ -8,6 +8,6 @@
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         compile 'com.tompium.havefun:tumweb:0.0.1'
+         compile 'com.tompium:tumweb:v0.0-alpha.1'
    }
 ```
