@@ -8,7 +8,7 @@
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         compile 'com.tompium:tumweb:v0.0-alpha.1'
+         compile 'com.tompium:tumweb:v0.0-alpha.2'
    }
 ```
 

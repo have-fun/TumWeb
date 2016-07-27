@@ -30,31 +30,31 @@ class Session private constructor(builder: Session.Builder) {
         lateinit var content: String
         lateinit var inputStream: InputStream
 
-        fun uri(init: Builder.() -> String) {
+        fun uri(init: () -> String) {
             uri = init()
         }
 
-        fun headers(init: Builder.() -> Map<String, String?>) {
+        fun headers(init: () -> Map<String, String?>) {
             headers = init()
         }
 
-        fun method(init: Builder.() -> String) {
+        fun method(init: () -> String) {
             method = Host.Method.valueOf(init())
         }
 
-        fun cookies(init: Builder.() -> Map<String, String?>) {
+        fun cookies(init: () -> Map<String, String?>) {
             cookies = init()
         }
 
-        fun params(init: Builder.() -> Map<String, String?>) {
+        fun params(init: () -> Map<String, String?>) {
             params = init()
         }
 
-        fun content(init: Builder.() -> String) {
+        fun content(init: () -> String) {
             content = init()
         }
 
-        fun inputStream(init: Builder.() -> InputStream) {
+        fun inputStream(init: () -> InputStream) {
             inputStream = init()
         }
 

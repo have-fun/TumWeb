@@ -1,16 +1,15 @@
 package havefun.tumweb
 
 import havefun.tumweb.Response.MimeType
-import havefun.tumweb.injection.DaggerServerComponent
 import havefun.tumweb.injection.ServerComponent
 import havefun.tumweb.injection.ServerModule
+import havefun.tumweb.injection.DaggerServerComponent
 import java.net.HttpURLConnection.HTTP_INTERNAL_ERROR
 import java.net.HttpURLConnection.HTTP_NOT_FOUND
+import java.util.*
 import java.util.logging.Level
 import java.util.logging.Logger
 import javax.inject.Inject
-import kotlin.text.MatchGroupCollection
-import kotlin.text.Regex
 
 abstract class Service(component: ServerComponent) {
     enum class State {
@@ -25,7 +24,7 @@ abstract class Service(component: ServerComponent) {
     init {
         component.inject(this)
         host.handler = { session -> handle(session) }
-        routingTable = linkedListOf()
+        routingTable = LinkedList()
     }
 
     constructor(portNo: Int): this(defaultComponent(portNo))
@@ -34,7 +33,7 @@ abstract class Service(component: ServerComponent) {
         if (state != State.BEING_STARTED && state != State.STARTED) {
             state = State.BEING_STARTED
 
-            routingTable = linkedListOf()
+            routingTable = LinkedList()
             initRouter()
 
             host.start()

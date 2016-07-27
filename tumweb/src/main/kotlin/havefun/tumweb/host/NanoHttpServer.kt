@@ -19,10 +19,17 @@ class NanoHttpServer(port: Int) : Host, NanoHTTPD(port) {
 
     private fun toRequestSession(httpSession: IHTTPSession) =
         session {
-            uri { httpSession.uri }
-            headers { httpSession.headers }
+            uri {
+                cookies
+                httpSession.uri
+
+            }
+            headers { httpSession.headers
+                cookies
+                this.cookies
+            }
             method { httpSession.method.toString() }
-            cookies { httpSession.cookies.toMapBy({ it }, { httpSession.cookies.read(it.toString()) })}
+            cookies { httpSession.cookies.associateBy({ it }, { httpSession.cookies.read(it.toString()) }) }
             params { httpSession.parms }
             content {
                 val data = hashMapOf<String, String>()
